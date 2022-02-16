@@ -1,0 +1,16 @@
+bases:
+  - ../../application
+patchesStrategicMerge:
+  - env.yaml
+patches:
+  - replica_count.yaml
+  - resource_limits.yaml
+configMapGenerator:
+  - name: example-config
+    namespace: example
+    behavior: replace
+    files:
+      - configs/config.json
+images:
+  - name: aimvector/python
+    newTag: 1.0.1
